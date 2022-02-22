@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './newPDF.dart';
+import './newPDF.dart' as n;
 
 void main() {
   runApp(const Startup());
@@ -7,8 +7,6 @@ void main() {
 
 class Startup extends StatelessWidget {
   const Startup({Key? key}) : super(key: key);
-
-  _newPDF() {}
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +16,7 @@ class Startup extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const Buttons(),
-        '/newPDF': (context) => const newPDFhome()
+        '/newPDF': (context) => const n.newPDFhome()
       },
     );
   }
@@ -35,8 +33,10 @@ class Buttons extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton.extended(
+            heroTag: "newPDF",
             onPressed: () async {
-              Navigator.pushNamed(context, '/newPDF');
+              n.main();
+              //Navigator.pushNamed(context, '/newPDF');
             },
             label: const Text('New Pdf'),
           ),
