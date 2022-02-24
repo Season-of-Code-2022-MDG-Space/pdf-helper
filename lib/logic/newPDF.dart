@@ -7,7 +7,8 @@ import 'dart:io';
 import '../ui/newPDF.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:async';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:open_file/open_file.dart';
+//import 'package:permission_handler/permission_handler.dart';
 
 int pageCount = 0;
 void main() {
@@ -41,10 +42,11 @@ Future<void> addPage(imagePath) async {
   );
 
   pdf1.addPage(pw.Page(build: (pw.Context context) {
-    return pw.Center(
+    return pw.Expanded(
       child: pw.Image(image),
     ); // Center
   })); // Page
+  await pdf1.document.save();
   pageCount++;
 }
 
@@ -64,11 +66,13 @@ Future<bool> _requestPermission(Permission permission) async {
 */
 //to save pdf
 Future<void> savePDF() async {
-  final pdffile = await pdf1.save();
+  //final pdffile = await pdf1.save();
   final dir = await getExternalStorageDirectory();
   final pdfPath = dir!.path + "/mypdf.pdf";
   File pdffile1 = File(pdfPath);
   await pdffile1.writeAsBytes(await pdf1.save());
+  OpenFile.open(pdfPath);
+
   //if (!await pdffile.exists()) {
   //  pdffile.create(recursive: true);
   //}

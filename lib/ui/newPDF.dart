@@ -44,6 +44,7 @@ class _newPDFhomeState extends State<newPDFhome> {
     // } //else {
     return [
       FloatingActionButton.extended(
+          heroTag: null,
           onPressed: () async {
             try {
               Navigator.pushNamed(context, '/cam');
@@ -54,6 +55,7 @@ class _newPDFhomeState extends State<newPDFhome> {
           },
           label: const Text('go to click pic screen')),
       FloatingActionButton.extended(
+          heroTag: null,
           onPressed: () async {
             await savePDF();
           },

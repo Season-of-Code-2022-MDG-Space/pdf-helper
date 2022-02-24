@@ -23,6 +23,8 @@ import 'dart:async';
 //   );
 // }
 
+//late XFile picture;
+
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
     Key? key,
@@ -61,6 +63,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           label: const Text('Back'),
         ),
         FloatingActionButton.extended(
+            heroTag: 'save pdf on phone locally',
             onPressed: () async {
               n.savePDF();
             },
@@ -124,7 +127,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             await _initializeControllerFuture;
             // Attempt to take a picture and get the file `image`
             // where it was saved.
-            final picture = await _controller.takePicture();
+            var picture = await _controller.takePicture();
+            var pp = picture.path;
             // If the picture was taken, display it on a new screen.
             Navigator.of(context)
                 .push(MaterialPageRoute<void>(builder: (context) {
@@ -145,8 +149,9 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                           label: const Text('Discard Picture'),
                         ),
                         FloatingActionButton.extended(
+                            heroTag: 'add pic as page to pdf',
                             onPressed: () async {
-                              await n.addPage(picture.path);
+                              await n.addPage(pp);
                               Navigator.of(context).pop();
                               Navigator.of(context).pop();
                             },
