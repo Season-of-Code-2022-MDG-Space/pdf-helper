@@ -11,12 +11,13 @@ import 'package:open_file/open_file.dart';
 //import 'package:permission_handler/permission_handler.dart';
 
 int pageCount = 0;
-void main() {
+late pw.Document pdf1;
+void start() {
   pageCount = 0;
+  pdf1 = pw.Document();
 }
 
 //to create global variable of pdf document
-late pw.Document pdf1 = pw.Document();
 
 //initialises the pdf file
 // Future<void> main() async {
@@ -48,6 +49,7 @@ Future<void> addPage(imagePath) async {
   })); // Page
   await pdf1.document.save();
   pageCount++;
+  update();
 }
 
 /*

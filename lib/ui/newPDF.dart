@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 //import 'package:path/path.dart' as Path;
-import '../logic/newPDF.dart';
+import '../logic/newPDF.dart' as nl;
 import '../logic/clickPic.dart' as c;
 import './start.dart' as p;
 //import 'package:camera/camera.dart';
 import 'dart:async';
 
 Future<void> start() async {
-  final firstCamera = await getCamera();
+  nl.start();
+  final firstCamera = await nl.getCamera();
   runApp(MaterialApp(
     routes: {
       '/': (context) => const newPDFhome(),
@@ -15,6 +16,10 @@ Future<void> start() async {
     },
     initialRoute: '/',
   ));
+}
+
+void update() {
+  _newPDFhomeState().updatePc();
 }
 
 class newPDFhome extends StatefulWidget {
@@ -26,6 +31,13 @@ class newPDFhome extends StatefulWidget {
 
 class _newPDFhomeState extends State<newPDFhome> {
   //int _pageCount = pageCount;
+  int _pc = nl.pageCount;
+
+  void updatePc() {
+    setState(() {
+      _pc++;
+    });
+  }
 
   _defineChildren() {
     // if (pageCount == 0) {
@@ -57,7 +69,7 @@ class _newPDFhomeState extends State<newPDFhome> {
       FloatingActionButton.extended(
           heroTag: null,
           onPressed: () async {
-            await savePDF();
+            await nl.savePDF();
           },
           label: const Text('save'))
     ];
@@ -78,7 +90,7 @@ class _newPDFhomeState extends State<newPDFhome> {
               label: const Text('back')),
         ),
         body: Column(children: [
-          Text('U hv clicked $pageCount pages'),
+          Text('U hv clicked $_pc pages'),
           Column(
             children: _defineChildren(),
           )
