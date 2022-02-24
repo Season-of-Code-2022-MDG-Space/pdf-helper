@@ -7,6 +7,8 @@ import './newPDF.dart' as n;
 import '../ui/newPDF.dart' as p;
 import 'package:pdf/pdf.dart' as pdf;
 import 'package:pdf/widgets.dart' as pw;
+import '../ui/start.dart' as s;
+import 'dart:async';
 
 // Future<void> main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -147,7 +149,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                               await n.addPage(picture.path);
                               Navigator.of(context).pop();
                               Navigator.of(context).pop();
-                              p.pc = n.pageCount;
                             },
                             label: const Text('add pic to pdf'))
                       ],

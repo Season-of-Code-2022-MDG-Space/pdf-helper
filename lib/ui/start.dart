@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './newPDF.dart' as n;
+import 'dart:async';
 
 void main() {
   runApp(const Startup());
@@ -16,7 +17,7 @@ class Startup extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const Buttons(),
-        '/newPDF': (context) => const n.newPDFhome()
+        //'/newPDF': (context) => const n.newPDFhome()
       },
     );
   }
@@ -35,7 +36,7 @@ class Buttons extends StatelessWidget {
           FloatingActionButton.extended(
             heroTag: "newPDF",
             onPressed: () async {
-              n.main();
+              n.start();
               //Navigator.pushNamed(context, '/newPDF');
             },
             label: const Text('New Pdf'),

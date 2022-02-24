@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import '../logic/newPDF.dart';
 import '../logic/clickPic.dart' as c;
 import './start.dart' as p;
-import 'package:camera/camera.dart';
+//import 'package:camera/camera.dart';
+import 'dart:async';
 
-int pc = 0;
-Future<void> main() async {
-  //pc = pageCount;
+Future<void> start() async {
   final firstCamera = await getCamera();
   runApp(MaterialApp(
     routes: {
       '/': (context) => const newPDFhome(),
-      '/bak': (context) => const p.Buttons(),
       '/cam': (context) => c.TakePictureScreen(camera: firstCamera)
     },
     initialRoute: '/',
@@ -30,40 +28,38 @@ class _newPDFhomeState extends State<newPDFhome> {
   //int _pageCount = pageCount;
 
   _defineChildren() {
-    if (pageCount == 0) {
-      return [
-        FloatingActionButton.extended(
-            onPressed: () async {
-              try {
-                Navigator.pushNamed(context, '/cam');
-              } catch (e) {
-                //ignore:avoid_print
-                print(e);
-              }
-            },
-            tooltip: "Saved Suggestions",
-            label: const Text('go to click pic screen'))
-      ];
-    } else {
-      return [
-        FloatingActionButton.extended(
-            onPressed: () async {
-              try {
-                Navigator.pushNamed(context, '/cam');
-              } catch (e) {
-                //ignore:avoid_print
-                print(e);
-              }
-            },
-            tooltip: "Saved Suggestions",
-            label: const Text('go to click pic screen')),
-        FloatingActionButton.extended(
-            onPressed: () async {
-              await savePDF();
-            },
-            label: const Text('save'))
-      ];
-    }
+    // if (pageCount == 0) {
+    //   return [
+    //     FloatingActionButton.extended(
+    //         onPressed: () async {
+    //           try {
+    //             Navigator.pushNamed(context, '/cam');
+    //           } catch (e) {
+    //             //ignore:avoid_print
+    //             print(e);
+    //           }
+    //         },
+    //         label: const Text('go to click pic screen'))
+    //   ];
+    // } //else {
+    return [
+      FloatingActionButton.extended(
+          onPressed: () async {
+            try {
+              Navigator.pushNamed(context, '/cam');
+            } catch (e) {
+              //ignore:avoid_print
+              print(e);
+            }
+          },
+          label: const Text('go to click pic screen')),
+      FloatingActionButton.extended(
+          onPressed: () async {
+            await savePDF();
+          },
+          label: const Text('save'))
+    ];
+    //}
   }
 
   @override
@@ -76,12 +72,11 @@ class _newPDFhomeState extends State<newPDFhome> {
               onPressed: () async {
                 Navigator.of(context).pop();
                 p.main();
-                //Navigator.pushNamed(context, '/bak');
               },
               label: const Text('back')),
         ),
         body: Column(children: [
-          Text('U hv clicked $pc pages'),
+          Text('U hv clicked $pageCount pages'),
           Column(
             children: _defineChildren(),
           )
