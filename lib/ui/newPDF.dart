@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 //import 'package:path/path.dart' as Path;
 import '../logic/newPDF.dart' as nl;
@@ -6,8 +7,14 @@ import './start.dart' as p;
 //import 'package:camera/camera.dart';
 import 'dart:async';
 
+late int _pc;
+Future<CameraDescription> getCam() async {
+  return await nl.getCamera();
+}
+
 Future<void> start() async {
   nl.start();
+  int _pc = nl.pageCount;
   final firstCamera = await nl.getCamera();
   runApp(MaterialApp(
     routes: {
@@ -16,10 +23,6 @@ Future<void> start() async {
     },
     initialRoute: '/',
   ));
-}
-
-void update() {
-  _newPDFhomeState().updatePc();
 }
 
 class newPDFhome extends StatefulWidget {
@@ -31,68 +34,91 @@ class newPDFhome extends StatefulWidget {
 
 class _newPDFhomeState extends State<newPDFhome> {
   //int _pageCount = pageCount;
-  int _pc = nl.pageCount;
-
-  void updatePc() {
-    setState(() {
-      _pc++;
-    });
-  }
+  //int _pc = nl.pageCount - 1;
 
   _defineChildren() {
-    // if (pageCount == 0) {
-    //   return [
-    //     FloatingActionButton.extended(
-    //         onPressed: () async {
-    //           try {
-    //             Navigator.pushNamed(context, '/cam');
-    //           } catch (e) {
-    //             //ignore:avoid_print
-    //             print(e);
-    //           }
-    //         },
-    //         label: const Text('go to click pic screen'))
-    //   ];
-    // } //else {
-    return [
-      FloatingActionButton.extended(
-          heroTag: null,
-          onPressed: () async {
-            try {
-              Navigator.pushNamed(context, '/cam');
-            } catch (e) {
-              //ignore:avoid_print
-              print(e);
-            }
-          },
-          label: const Text('go to click pic screen')),
-      FloatingActionButton.extended(
-          heroTag: null,
-          onPressed: () async {
-            await nl.savePDF();
-          },
-          label: const Text('save'))
-    ];
-    //}
+    if (nl.pageCount == 0) {
+      return [
+        FloatingActionButton.extended(
+            onPressed: () async {
+              try {
+                final _cam = await getCam();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => c.TakePictureScreen(
+                              camera: _cam,
+                            )),
+                    (route) => false);
+              } catch (e) {
+                //ignore:avoid_print
+                print(e);
+              }
+            },
+            label: const Text('go to click pic screen'))
+      ];
+    } else {
+      return [
+        FloatingActionButton.extended(
+            heroTag: null,
+            onPressed: () async {
+              try {
+                final _cam = await getCam();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => c.TakePictureScreen(
+                              camera: _cam,
+                            )),
+                    (route) => false);
+                //Navigator.of(context).push(MaterialPageRoute(
+                //  builder: (BuildContext context) =>
+                //    c.TakePictureScreen(camera: _cam)
+                //c.TakePictureScreen(camera: await getCam())
+                //));
+              } catch (e) {
+                //ignore:avoid_print
+                print(e);
+              }
+            },
+            label: const Text('go to click pic screen')),
+        FloatingActionButton.extended(
+            heroTag: null,
+            onPressed: () async {
+              await nl.savePDF();
+            },
+            label: const Text('save'))
+      ];
+    }
   }
 
   @override
+  void initState() {
+    _pc = nl.pageCount;
+  }
+
+  var childrenDefined;
+  @override
   Widget build(BuildContext context) {
+    initState();
     return Scaffold(
         appBar: AppBar(
           title: const Text('new PDF home page'),
           leading: FloatingActionButton.extended(
               heroTag: "newPDFback",
               onPressed: () async {
-                Navigator.of(context).pop();
-                p.main();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => const p.Buttons()),
+                    (route) => false);
               },
               label: const Text('back')),
         ),
         body: Column(children: [
           Text('U hv clicked $_pc pages'),
           Column(
-            children: _defineChildren(),
+            children: childrenDefined = _defineChildren(),
           )
         ]));
   }

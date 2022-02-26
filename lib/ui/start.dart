@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import './newPDF.dart' as n;
 import 'dart:async';
-
-void main() {
-  runApp(const Startup());
-}
+import '../logic/newPDF.dart' as nl;
+// void main() {
+//   runApp(const Startup());
+// }
 
 class Startup extends StatelessWidget {
   const Startup({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    nl.start();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PDF Helper',
-      initialRoute: '/',
       routes: {
         '/': (context) => const Buttons(),
-        //'/newPDF': (context) => const n.newPDFhome()
+        '/newPDF': (context) => const n.newPDFhome()
       },
     );
   }
@@ -36,7 +36,11 @@ class Buttons extends StatelessWidget {
           FloatingActionButton.extended(
             heroTag: "newPDF",
             onPressed: () async {
-              n.start();
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const n.newPDFhome()),
+                  (route) => false);
               //Navigator.pushNamed(context, '/newPDF');
             },
             label: const Text('New Pdf'),

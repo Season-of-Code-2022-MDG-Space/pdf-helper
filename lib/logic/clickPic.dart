@@ -145,6 +145,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                           heroTag: "viewPicback",
                           onPressed: () async {
                             Navigator.of(context).pop();
+                            p.start();
                           },
                           label: const Text('Discard Picture'),
                         ),
@@ -152,8 +153,12 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                             heroTag: 'add pic as page to pdf',
                             onPressed: () async {
                               await n.addPage(pp);
-                              Navigator.of(context).pop();
-                              Navigator.of(context).pop();
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          const p.newPDFhome()),
+                                  (route) => false);
                             },
                             label: const Text('add pic to pdf'))
                       ],
