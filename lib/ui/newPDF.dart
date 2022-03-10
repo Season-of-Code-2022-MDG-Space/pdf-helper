@@ -1,10 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-//import 'package:path/path.dart' as Path;
 import '../logic/newPDF.dart' as nl;
 import '../logic/clickPic.dart' as c;
 import './start.dart' as p;
-//import 'package:camera/camera.dart';
 import 'dart:async';
 
 late int _pc;
@@ -14,7 +12,6 @@ Future<CameraDescription> getCam() async {
 
 Future<void> start() async {
   nl.start();
-  int _pc = nl.pageCount;
   final firstCamera = await nl.getCamera();
   runApp(MaterialApp(
     routes: {
@@ -33,9 +30,6 @@ class newPDFhome extends StatefulWidget {
 }
 
 class _newPDFhomeState extends State<newPDFhome> {
-  //int _pageCount = pageCount;
-  //int _pc = nl.pageCount - 1;
-
   _defineChildren() {
     if (nl.pageCount == 0) {
       return [
@@ -71,11 +65,6 @@ class _newPDFhomeState extends State<newPDFhome> {
                               camera: _cam,
                             )),
                     (route) => false);
-                //Navigator.of(context).push(MaterialPageRoute(
-                //  builder: (BuildContext context) =>
-                //    c.TakePictureScreen(camera: _cam)
-                //c.TakePictureScreen(camera: await getCam())
-                //));
               } catch (e) {
                 //ignore:avoid_print
                 print(e);

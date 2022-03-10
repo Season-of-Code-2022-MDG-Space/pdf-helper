@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import './newPDF.dart' as n;
-import 'dart:async';
 import '../logic/newPDF.dart' as nl;
-// void main() {
-//   runApp(const Startup());
-// }
 
 class Startup extends StatelessWidget {
   const Startup({Key? key}) : super(key: key);
@@ -45,13 +41,6 @@ class Buttons extends StatelessWidget {
             },
             label: const Text('New Pdf'),
           ),
-          /*button to edit existing pdf
-          FloatingActionButton.extended(
-              onPressed: () async {
-                Navigator.pushNamed(context, '/editOld');
-              },
-              label: const Text('Edit Existing PDF'))
-              */
         ],
       ),
     );
