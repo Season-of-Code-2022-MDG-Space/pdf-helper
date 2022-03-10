@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import '../logic/newPDF.dart' as nl;
-import '../logic/clickPic.dart' as c;
+import '../logic/new_pdf.dart' as nl;
+import '../logic/click_pic.dart' as c;
 import './start.dart' as p;
 import 'dart:async';
 
@@ -15,21 +15,21 @@ Future<void> start() async {
   final firstCamera = await nl.getCamera();
   runApp(MaterialApp(
     routes: {
-      '/': (context) => const newPDFhome(),
+      '/': (context) => const NewPDFHome(),
       '/cam': (context) => c.TakePictureScreen(camera: firstCamera)
     },
     initialRoute: '/',
   ));
 }
 
-class newPDFhome extends StatefulWidget {
-  const newPDFhome({Key? key}) : super(key: key);
+class NewPDFHome extends StatefulWidget {
+  const NewPDFHome({Key? key}) : super(key: key);
 
   @override
-  _newPDFhomeState createState() => _newPDFhomeState();
+  _NewPDFHomeState createState() => _NewPDFHomeState();
 }
 
-class _newPDFhomeState extends State<newPDFhome> {
+class _NewPDFHomeState extends State<NewPDFHome> {
   _defineChildren() {
     if (nl.pageCount == 0) {
       return [
@@ -107,7 +107,7 @@ class _newPDFhomeState extends State<newPDFhome> {
         body: Column(children: [
           Text('U hv clicked $_pc pages'),
           Column(
-            children: childrenDefined = _defineChildren(),
+            children: _defineChildren(),
           )
         ]));
   }

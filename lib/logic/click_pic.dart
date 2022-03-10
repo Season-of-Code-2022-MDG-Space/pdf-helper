@@ -1,8 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import './newPDF.dart' as n;
-import '../ui/newPDF.dart' as p;
+import 'new_pdf.dart' as n;
+import '../ui/new_pdf.dart' as p;
 import 'dart:async';
 
 class TakePictureScreen extends StatefulWidget {
@@ -99,7 +99,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const p.newPDFhome()),
+                                          const p.NewPDFHome()),
                                   (route) => false);
                             },
                             label: const Text('add pic to pdf'))

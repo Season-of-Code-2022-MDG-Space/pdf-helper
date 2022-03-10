@@ -45,8 +45,8 @@ Future<void> savePDF() async {
   final dir = await getExternalStorageDirectory();
   final pdfPath = dir!.path + "/mypdf.pdf";
   File pdffile1 = File(pdfPath);
-  final pdf_for_saving_purposes = pdf1;
-  final pdfne = await pdf_for_saving_purposes.save();
+  final pdfForSaving = pdf1;
+  final pdfne = await pdfForSaving.save();
   await pdffile1.writeAsBytes(pdfne);
   OpenFile.open(pdfPath);
 }

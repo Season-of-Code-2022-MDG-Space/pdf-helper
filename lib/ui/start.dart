@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './newPDF.dart' as n;
-import '../logic/newPDF.dart' as nl;
+import 'new_pdf.dart' as n;
+import '../logic/new_pdf.dart' as nl;
 
 class Startup extends StatelessWidget {
   const Startup({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class Startup extends StatelessWidget {
       title: 'PDF Helper',
       routes: {
         '/': (context) => const Buttons(),
-        '/newPDF': (context) => const n.newPDFhome()
+        '/newPDF': (context) => const n.NewPDFHome()
       },
     );
   }
@@ -35,7 +35,7 @@ class Buttons extends StatelessWidget {
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => const n.newPDFhome()),
+                      builder: (BuildContext context) => const n.NewPDFHome()),
                   (route) => false);
               //Navigator.pushNamed(context, '/newPDF');
             },
