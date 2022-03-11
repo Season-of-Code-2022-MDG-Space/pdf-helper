@@ -1,0 +1,106 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.pdf_helper"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="32" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->/Users/apple/Desktop/mdg_soc_cloned/pdf-helper/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/Users/apple/Desktop/mdg_soc_cloned/pdf-helper/android/app/src/debug/AndroidManifest.xml:6:22-64
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+15-->/Users/apple/Desktop/mdg_soc_cloned/pdf-helper/android/app/src/main/AndroidManifest.xml:3:5-80
+15-->/Users/apple/Desktop/mdg_soc_cloned/pdf-helper/android/app/src/main/AndroidManifest.xml:3:22-78
+16    <uses-permission android:name="android.permission.CAMERA" />
+16-->[:camera] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-65
+16-->[:camera] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-62
+17    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+17-->[:camera] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-71
+17-->[:camera] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:10:22-68
+18    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+18-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-83
+18-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-80
+19    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+19-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-80
+19-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-77
+20
+21    <application
+22        android:name="android.app.Application"
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.6.0] /Users/apple/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/AndroidManifest.xml:24:18-86
+24        android:debuggable="true"
+25        android:icon="@mipmap/ic_launcher"
+26        android:label="pdf_helper"
+27        android:requestLegacyExternalStorage="true" >
+28        <activity
+29            android:name="com.example.pdf_helper.MainActivity"
+30            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+31            android:exported="true"
+32            android:hardwareAccelerated="true"
+33            android:launchMode="singleTop"
+34            android:theme="@style/LaunchTheme"
+35            android:windowSoftInputMode="adjustResize" >
+36
+37            <!--
+38                 Specifies an Android theme to apply to this Activity as soon as
+39                 the Android process has started. This theme is visible to the user
+40                 while the Flutter UI initializes. After that, this theme continues
+41                 to determine the Window background behind the Flutter UI.
+42            -->
+43            <meta-data
+44                android:name="io.flutter.embedding.android.NormalTheme"
+45                android:resource="@style/NormalTheme" />
+46
+47            <intent-filter>
+48                <action android:name="android.intent.action.MAIN" />
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+51            </intent-filter>
+52        </activity>
+53        <!--
+54             Don't delete the meta-data below.
+55             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+56        -->
+57        <meta-data
+58            android:name="flutterEmbedding"
+59            android:value="2" />
+60
+61        <provider
+61-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-21:20
+62            android:name="com.crazecoder.openfile.FileProvider"
+62-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-64
+63            android:authorities="com.example.pdf_helper.fileProvider.com.crazecoder.openfile"
+63-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-88
+64            android:exported="false"
+64-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-37
+65            android:grantUriPermissions="true" >
+65-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-47
+66            <meta-data
+66-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-20:53
+67                android:name="android.support.FILE_PROVIDER_PATHS"
+67-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-67
+68                android:resource="@xml/filepaths" />
+68-->[:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:20:17-50
+69        </provider>
+70
+71        <uses-library
+71-->[androidx.window:window:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+72            android:name="androidx.window.extensions"
+72-->[androidx.window:window:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+73            android:required="false" />
+73-->[androidx.window:window:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+74        <uses-library
+74-->[androidx.window:window:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+75            android:name="androidx.window.sidecar"
+75-->[androidx.window:window:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+76            android:required="false" />
+76-->[androidx.window:window:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+77    </application>
+78
+79</manifest>
