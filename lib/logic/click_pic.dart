@@ -4,6 +4,9 @@ import 'dart:io';
 import 'new_pdf.dart' as n;
 import '../ui/new_pdf.dart' as p;
 import 'dart:async';
+import 'package:image_cropper/image_cropper.dart';
+
+late XFile picture;
 
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
@@ -69,14 +72,18 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             await _initializeControllerFuture;
             // Attempt to take a picture and get the file `image`
             // where it was saved.
-            var picture = await _controller.takePicture();
+            picture = await _controller.takePicture();
             var pp = picture.path;
             // If the picture was taken, display it on a new screen.
             Navigator.of(context)
                 .push(MaterialPageRoute<void>(builder: (context) {
               return Scaffold(
                   appBar: AppBar(
-                    title: const Text('View Picture'),
+                    leading: FloatingActionButton.extended(
+                        onPressed: () {
+                          _cropImage(pp);
+                        },
+                        label: const Text('crop')),
                   ),
                   body: SingleChildScrollView(
                       child: Stack(children: [
@@ -116,5 +123,14 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
+  }
+
+  Future<void> _cropImage(filePath) async {
+    var cropped = await ImageCropper().cropImage(sourcePath: filePath);
+    if (cropped != null) {
+      setState(() {
+        picture = cropped as XFile;
+      });
+    }
   }
 }
