@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'dart:async';
 import 'package:open_file/open_file.dart';
+import './click_pic.dart';
 
 int pageCount = 0;
 late pw.Document pdf1;
@@ -32,11 +33,13 @@ Future<void> addPage(imagePath) async {
   );
 
   pdf1.addPage(pw.Page(build: (pw.Context context) {
-    return pw.Expanded(
+    return pw.Flexible(
       child: pw.Image(image),
+      fit: pw.FlexFit.tight,
     );
   }));
   pageCount++;
+  dividers = 0;
 }
 
 //to save pdf

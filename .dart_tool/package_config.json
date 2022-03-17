@@ -110,8 +110,20 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_hooks",
+      "rootUri": "file:///Users/apple/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_hooks-0.18.2+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/apple/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_native_image",
+      "rootUri": "file:///Users/apple/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_native_image-0.0.6+1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -386,7 +398,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-03-11T10:50:02.585537Z",
+  "generated": "2022-03-17T05:09:07.843039Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }
