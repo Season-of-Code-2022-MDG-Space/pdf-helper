@@ -4,6 +4,12 @@ import 'dart:io';
 import 'new_pdf.dart' as n;
 import '../ui/new_pdf.dart' as p;
 import 'dart:async';
+import '../ui/divider.dart';
+
+late XFile picture;
+late String pp;
+int dividers = 0;
+List<Widget> arr = [];
 
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
@@ -20,9 +26,47 @@ class TakePictureScreen extends StatefulWidget {
 class TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+  _initArr() {
+    arr.addAll([
+      Container(
+        child: Image.file(File(picture.path)),
+      ),
+      Row(
+        children: [
+          FloatingActionButton.extended(
+            onPressed: () {
+              arr.add(StatefulDragArea(child: Image.asset('divider.png')));
+            },
+            label: const Text('+'),
+          ),
+          FloatingActionButton.extended(
+            heroTag: "viewPicback",
+            onPressed: () async {
+              Navigator.of(context).pop();
+              p.start();
+            },
+            label: const Text('D'),
+          ),
+          FloatingActionButton.extended(
+              heroTag: 'add pic as page to pdf',
+              onPressed: () async {
+                await n.dividePage(pp, arr);
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const p.NewPDFHome()),
+                    (route) => false);
+              },
+              label: const Text('a')),
+        ],
+      ),
+    ]);
+  }
 
   @override
   void initState() {
+    dividers = 0;
     super.initState();
     // create a CameraController.
     _controller = CameraController(
@@ -45,6 +89,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //_initArr();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Take a picture'),
@@ -67,10 +112,12 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           try {
             // Ensure that the camera is initialized.
             await _initializeControllerFuture;
+            //_initArr();
             // Attempt to take a picture and get the file `image`
             // where it was saved.
-            var picture = await _controller.takePicture();
-            var pp = picture.path;
+            picture = await _controller.takePicture();
+            pp = picture.path;
+            _initArr();
             // If the picture was taken, display it on a new screen.
             Navigator.of(context)
                 .push(MaterialPageRoute<void>(builder: (context) {
@@ -78,34 +125,13 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                   appBar: AppBar(
                     title: const Text('View Picture'),
                   ),
-                  body: SingleChildScrollView(
-                      child: Stack(children: [
-                    Image.file(File(picture.path)),
-                    Row(
-                      children: [
-                        FloatingActionButton.extended(
-                          heroTag: "viewPicback",
-                          onPressed: () async {
-                            Navigator.of(context).pop();
-                            p.start();
-                          },
-                          label: const Text('Discard Picture'),
-                        ),
-                        FloatingActionButton.extended(
-                            heroTag: 'add pic as page to pdf',
-                            onPressed: () async {
-                              await n.addPage(pp);
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          const p.NewPDFHome()),
-                                  (route) => false);
-                            },
-                            label: const Text('add pic to pdf'))
-                      ],
-                    )
-                  ])));
+                  body: Stack(
+                    children: arr,
+                  )
+
+                  //SingleChildScrollView(
+                  //child: Stack(children: _screenChildren()))
+                  );
             }));
           } catch (e) {
             // ignore: avoid_print

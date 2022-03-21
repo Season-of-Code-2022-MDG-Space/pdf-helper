@@ -24,6 +24,7 @@ MERGED from [:camera] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/camer
 MERGED from [:flutter_plugin_android_lifecycle] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-24:12
 MERGED from [:path_provider_android] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/path_provider_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_native_image] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/flutter_native_image/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/ad201fac15a88598107ec645f351f5b4/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/apple/.gradle/caches/transforms-2/files-2.1/25f3df754e4d43a563877bdf21983017/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -90,6 +91,8 @@ MERGED from [:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/op
 MERGED from [:open_file] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/open_file/intermediates/library_manifest/debug/AndroidManifest.xml:6:5-44
 MERGED from [:path_provider_android] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/path_provider_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/path_provider_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_image] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/flutter_native_image/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_image] /Users/apple/Desktop/mdg_soc_cloned/pdf-helper/build/flutter_native_image/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/ad201fac15a88598107ec645f351f5b4/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/ad201fac15a88598107ec645f351f5b4/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/apple/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
