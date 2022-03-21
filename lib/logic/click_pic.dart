@@ -50,7 +50,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           FloatingActionButton.extended(
               heroTag: 'add pic as page to pdf',
               onPressed: () async {
-                await n.addPage(pp);
+                await n.dividePage(pp, arr);
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
