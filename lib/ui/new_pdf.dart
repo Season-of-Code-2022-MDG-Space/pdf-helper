@@ -14,6 +14,7 @@ Future<void> start() async {
   nl.start();
   final firstCamera = await nl.getCamera();
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     routes: {
       '/': (context) => const NewPDFHome(),
       '/cam': (context) => c.TakePictureScreen(camera: firstCamera)
@@ -49,7 +50,7 @@ class _NewPDFHomeState extends State<NewPDFHome> {
                 print(e);
               }
             },
-            label: const Text('go to click pic screen'))
+            label: const Text('click pic (add page)'))
       ];
     } else {
       return [
@@ -70,7 +71,7 @@ class _NewPDFHomeState extends State<NewPDFHome> {
                 print(e);
               }
             },
-            label: const Text('go to click pic screen')),
+            label: const Text('click pic (add page)')),
         FloatingActionButton.extended(
             heroTag: null,
             onPressed: () async {
@@ -86,7 +87,6 @@ class _NewPDFHomeState extends State<NewPDFHome> {
     _pc = nl.pageCount;
   }
 
-  var childrenDefined;
   @override
   Widget build(BuildContext context) {
     initState();
@@ -104,11 +104,12 @@ class _NewPDFHomeState extends State<NewPDFHome> {
               },
               label: const Text('back')),
         ),
-        body: Column(children: [
-          Text('U hv clicked $_pc pages'),
+        body: Center(
+            child: Column(children: [
+          Text('You have clicked $_pc pages'),
           Column(
             children: _defineChildren(),
           )
-        ]));
+        ])));
   }
 }
